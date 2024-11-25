@@ -308,17 +308,21 @@ export function HypergraphNodeComponentKeyboardOnly(
 
   return (
     <div>
-      <p style={{ "font-weight": "bold", "margin-left": "40px" }}>Belongs to</p>
+      <ul tabindex="-1" style={{ "margin-bottom": "-10px" }}>
+        <span style={{ "font-weight": "bold" }} aria-hidden={true}>
+          Belongs to
+        </span>
+      </ul>
+
       <ul
         id="parents-group"
         aria-label={
           props.node.parents.length == 0
-            ? `${props.node.displayName} belongs to 0 groups`
+            ? `${props.node.displayName} belongs to 0 groups. Press h to return to previous node.`
             : `${props.node.displayName} belongs to ${
                 sortedParents().length
-              } groups`
+              } groups. Use arrow and enter keys to make selection.`
         }
-        style={{ "margin-top": "-15px" }}
         tabindex="0"
       >
         <For each={sortedParents()}>
